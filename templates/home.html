@@ -1,13 +1,31 @@
 <!doctype html>
 <html>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <head>
     <title>Twitter Image Search</title>
   </head>
-  <body>
-    <h1>Twitter Image Search User Interface</h1>
-    <form method="POST">
-      <input type="text" name="search_term" placeholder="Image suggestion: tulip">
-      <button type="submit">Go!</button>
+  <body class="container">
+    <h1 class="text-center mt-5 mb-5">Twitter Image Search User Interface</h1>
+    <form method="POST" class="form-inline row mb-5">
+        <div class="form-group mb-2 col-md-10">
+            <input type="text" class="form-control" name="search_term" id="searchTerm" placeholder="Image suggestion: tulip" {% if search_term %} value="{{ search_term }}"{% endif %}>
+        </div>
+        <button class="btn btn-primary mb-2 float-end col-md-2" type="submit">Go!</button>
     </form>
+
+    {% if tweets %}
+        <ol>
+        {% for tweet in tweets %}
+            <li class="mb-4">
+                <div>
+                    <img src="{{ tweet.user.profile_image_url }}" class="rounded-circle" > {{ tweet.user.screen_name }} - {{ tweet.created_at.strftime('%Y-%m-%d') }}
+                </div>
+                <div>{{ tweet.full_text }}</div>
+                <div>Retweets: {{ tweet.retweet_count }}, Favourites: {{ tweet.favorite_count }}</div>
+            </li>
+        {% endfor %}
+        </ol>
+    {% endif %}
   </body>
 </html>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
