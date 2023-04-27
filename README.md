@@ -12,5 +12,3 @@ I have created a search form in the front-end (templates/home.html) that once is
 Up next, i render the template and pass the list results to home.html
 
 I also used an active virtual enviroment on Windows (command prompt: dev-env\bin\activate.bat) to "pip install flask" and "pip install tweepy", to help me generate a "pip freeze > requirements.txt", for any user running this script to easily run "pip install -r requirements.txt" so that all the required libraries install at once
-
-*update: the code will work only with a Twitter paid plan (source: https://www.thenationalnews.com/business/technology/2023/02/03/twitter-to-end-free-api-access-all-you-need-to-know/)
