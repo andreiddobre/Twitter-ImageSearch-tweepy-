@@ -2,6 +2,9 @@ from flask import Flask, render_template, request
 import tweepy
 import os
 
+# uplifting message
+print("You got this!")
+
 app = Flask(__name__)
 
 # set up Twitter API credentials
@@ -31,9 +34,9 @@ def index():
         
         # search for tweets containing the search term
         if only_images:
-            tweets = api.search(q=search_term, count=num_tweets, tweet_mode='extended', include_entities=True, media_type='photo')
+            tweets = api.search_tweets(q=search_term, count=num_tweets, tweet_mode='extended', include_entities=True, media_type='photo')
         else:
-            tweets = api.search(q=search_term, count=num_tweets, tweet_mode='extended', include_entities=True)
+            tweets = api.search_tweets(q=search_term, count=num_tweets, tweet_mode='extended', include_entities=True)
         
         # store the tweets in a list
         tweet_texts = []
@@ -54,4 +57,3 @@ def index():
 
 if __name__ == '__main__':
     app.run(debug = True)
-
