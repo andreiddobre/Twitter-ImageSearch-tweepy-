@@ -18,6 +18,13 @@ auth = tweepy.OAuth1UserHandler(API_key, API_secret, access_token, access_token_
 # create tweepy API instance (so we can access the Twitter API with the provided authentication credentials)
 api = tweepy.API(auth)
 
+# verify credentials
+try:
+    api.verify_credentials()
+    print("Authentication Successful")
+except:
+    print("Authentication Error")
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
