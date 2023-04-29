@@ -11,7 +11,11 @@
             <input type="text" class="form-control" name="search_term" id="searchTerm" placeholder="Image suggestion: tulip" {% if search_term %} value="{{ search_term }}"{% endif %}>
         </div>
         <button class="btn btn-primary mb-2 float-end col-md-2" type="submit">Go!</button>
+        <div>
+            <label for="only images"> <input type="checkbox" name="images" value="only images" id="check_only_images" style="text-align:center; vertical-align: middle;" q required /> Images only</label>
+        </div> 
     </form>
+    
 
     {% if tweets %}
         <ol>
